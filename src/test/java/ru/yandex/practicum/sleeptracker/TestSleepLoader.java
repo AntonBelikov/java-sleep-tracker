@@ -17,6 +17,7 @@ public class TestSleepLoader {
         sleepLoader.addWords("src/main/resources/sleep_log.txt");
         testSession = sleepLoader.getListOfSleepingSessions();
     }
+
     @Test
     public void testMustBeNotEmpty() {
         Assertions.assertFalse(testSession.size() == 0);
