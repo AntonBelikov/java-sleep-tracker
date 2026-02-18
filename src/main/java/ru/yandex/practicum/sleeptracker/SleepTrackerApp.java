@@ -21,10 +21,9 @@ public class SleepTrackerApp {
         functionsList.add(new AverageDuration());
         functionsList.add(new CountOfBADSessions());
         functionsList.add(new NightWithoutSleep());
+        functionsList.add(new UserClassification());
 
         // выводим результаты анализа
         functionsList.forEach(function -> System.out.println(function.apply(sleepingData)));
-
-
     }
 }
