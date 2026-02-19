@@ -1,6 +1,7 @@
 package ru.yandex.practicum.sleeptracker;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.List;
 import java.util.function.Function;
@@ -15,11 +16,11 @@ public class NightWithoutSleep implements Function<List<SleepingSession>, SleepA
             return new SleepAnalysisResult("Введен пустой список.", "Проверьте список");
         }
 
-        LocalDate startOfPeriod = sleepingSessionsList.get(0).getStartTime().toLocalDate();
+        LocalDateTime startOfPeriod = sleepingSessionsList.get(0).getStartTime();
         LocalDate endOfPeriod = sleepingSessionsList.get(sleepingSessionsList.size() - 1).getEndTime().toLocalDate();
-        int allNights = Period.between(startOfPeriod, endOfPeriod).getDays();
+        int allNights = Period.between(startOfPeriod.toLocalDate(), endOfPeriod).getDays();
 
-        if (sleepingSessionsList.get(0).getStartTime().getHour() < 12) {
+        if (startOfPeriod.getHour() < 12) {
             allNights++;
         }
 
