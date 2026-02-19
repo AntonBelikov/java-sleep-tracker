@@ -1,6 +1,5 @@
 package ru.yandex.practicum.sleeptracker;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,8 +21,6 @@ public class SleepLoader {
         Path filePath = Paths.get(file);
         try {
             sleepSessionsString = Files.readAllLines(filePath);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

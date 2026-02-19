@@ -10,6 +10,11 @@ public class NightWithoutSleep implements Function<List<SleepingSession>, SleepA
 
     @Override
     public SleepAnalysisResult apply(List<SleepingSession> sleepingSessionsList) {
+
+        if (sleepingSessionsList.isEmpty()) {
+            return new SleepAnalysisResult("Введен пустой список.", "Проверьте список");
+        }
+
         LocalDate startOfPeriod = sleepingSessionsList.get(0).getStartTime().toLocalDate();
         LocalDate endOfPeriod = sleepingSessionsList.get(sleepingSessionsList.size() - 1).getEndTime().toLocalDate();
         int allNights = Period.between(startOfPeriod, endOfPeriod).getDays();

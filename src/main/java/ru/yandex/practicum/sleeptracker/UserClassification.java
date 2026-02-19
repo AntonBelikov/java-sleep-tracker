@@ -10,6 +10,10 @@ public class UserClassification implements Function<List<SleepingSession>, Sleep
     public SleepAnalysisResult apply(List<SleepingSession> sleepingSessionsList) {
         UserType userType;
 
+        if (sleepingSessionsList.isEmpty()) {
+            return new SleepAnalysisResult("Введен пустой список.", "Проверьте список");
+        }
+
         List<SleepingSession> normalSleepNight = sleepingSessionsList.stream()
                 .filter(sleepingSession -> !(sleepingSession.getStartTime().toLocalDate()
                         .equals(sleepingSession.getEndTime().toLocalDate()))
